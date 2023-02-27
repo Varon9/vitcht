@@ -193,7 +193,7 @@ end
 		{ text = "Horny Bachelors", desc = "Añade un toque picante al juego", imageprev = hornybachelorsprev, moddesc = "Desnuda a todos los npcs masculinos y les añade tareas como,\npor ejemplo:\n\n-Masturbarse a ciertas horas y en ciertos lugares segun el día\n de la semana.\n\n-Tener encuentros sexuales entre ellos.\n\n-Incesto.\n\nEl mod aún está en desarrollo y esta expuesto a cambios.",	funct = HORNYBACHELORS},
 		{ text = "Pam, despierta, coño!", desc = "Cambia la hora a la que Pam va al bus", imageprev = pamwakeupprev, moddesc = "Archivo de tarea modificado para que Pam vaya al autobús\n a las 06:30.",		funct = PAMWAKEUP  },
 		{ text = "nude bachelorettes", desc = "Instala solo las modificaciones basicas sin contenido sexual", moddesc = "Desnuda a todos los npcs masculinos.",	funct = FFUSA},
-		{ text = "Desinstalar todos los mods", desc = "Desinstala los mods de la carpeta repatch", moddesc = "Desnuda a todos los npcs masculinos.",	funct = UNINSTALLUSA},
+		{ text = "Gayrdew Valley", desc = "Desinstala los mods de la carpeta repatch", moddesc = "Desnuda a todos los npcs masculinos.",	funct = UNINSTALLUSA},
 		{ text = "Explorar Mods", desc = "Instala el pack completo con contenido sexual de temática gay", moddesc = "Desnuda a todos los npcs masculinos.",		funct = XXXUSA  },
 		{ text = "Mods Básicos", desc = "Instala solo las modificaciones basicas sin contenido sexual", moddesc = "Desnuda a todos los npcs masculinos.",	funct = FFUSA},
 		{ text = "Nude Bachelors", desc = "Desnuda a todos los npcs masculinos.",	 moddesc = "Desnuda a todos los npcs masculinos.",	funct = NUDEBACHELORS  },
