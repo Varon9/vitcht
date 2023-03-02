@@ -107,10 +107,7 @@ function USA()
 	buttons.interval(10,6)
 	_tristate = false
 	
-	Nudebachelors_check = nil
-	Pam_check = nil
-	HornyBachelors_check = nil
-	Nudefarmer_check = nil
+
 	while true do
 		power.tick(0)
 		buttons.read()
@@ -118,20 +115,7 @@ function USA()
 		
 		if back then back:blit(0,0) end
 		--checks 
-if files.exists(Version.."/checks/Nudebachelors") then
-Nudebachelors_check = true
-end
-if files.exists(Version.."/checks/Pam.nepe") then
-Pam_check = true
-end
---Nude farmer
-if files.exists(Version.."/checks/Nudefarmer.nepe") then
-Nudefarmer_check = true
-end
---Horny bachelors
-if files.exists(Version.."/checks/Hornybachelors.nepe") then
-HornyBachelors_check = true
-end
+
 --end checks
 	    if files.exists(ruta.."Content.psarc") or files.exists(Version.."Content/Content.psarc")then
 			_estado = "Vanilla"
@@ -235,6 +219,29 @@ end
 				os.delay(2000)
 			end
 		dofile("Downloads.lua")
+		end
+		if buttons.held.l and buttons.held.r and buttons.held.square then 
+			if back then back:blit(0,0) end
+				wave:blit(1.5,300)
+				message_wait("\n Actualizando scripts del manager... \n")
+				os.delay(1000)
+				http.download("https://github.com/Varon9/vitcht/raw/main/Downloads.lua","ux0:app/STARDEWMO/Downloads.lua")
+				http.download("https://github.com/Varon9/vitcht/raw/main/Checks.lua","ux0:app/STARDEWMO/Checks.lua")
+				http.download("https://github.com/Varon9/vitcht/raw/main/commons.lua","ux0:app/STARDEWMO/commons.lua")
+				http.download("https://github.com/Varon9/vitcht/raw/main/funcion.lua","ux0:app/STARDEWMO/funcion.lua")
+				http.download("https://github.com/Varon9/vitcht/raw/main/script.lua","ux0:app/STARDEWMO/script.lua")
+				if http.download then
+					if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Actualizando script de mods... \n")
+					os.delay(1000)
+			else
+				if back then back:blit(0,0) end
+				wave:blit(1.5,300)
+				message_wait("\n Ha ocurrido un error al actualizar... \n")
+				os.delay(2000)
+			end
+		dofile("script.lua")
 		end
 		if buttons.accept then menu[scroll.sel].funct() end
 		if buttons.cancel then EXIT() end

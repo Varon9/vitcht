@@ -89,7 +89,6 @@ local splash = image.load("splash.png")
 	end
 
 
-
 _EUR = false
 _USA = false
 
