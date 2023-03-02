@@ -1,20 +1,19 @@
-
 FILENAME = "mod.zip"
 wave:begin("wave.png")--AQui te fallaba el wavw porque la png esta en la carpeta install y solo tenias wave:begin("wave.png")
 color.loadpalette()
 --images
-x = image.load("images/x.png")
-triangles = image.load("images/triangle.png")
+
 nudebachelorsprev = image.load("images/nudebachelorsprev.png")
 pamwakeupprev = image.load("images/pamwakeupprev.png")
 hornybachelorsprev = image.load("images/hornybachelorsprev.png")
 nudefarmermuscledprev = image.load("images/nudefarmermuscle.png")
+
 --descargas
 function NUDEBACHELORS()
 		if back then back:blit(0,0) end
 		wave:blit(1.5,300)
 		message_wait("\n Comenzando la descarga... \n")
-		URL = "https://github.com/Varon9/vitcht/files/10834365/NDBACHELORS.zip"
+		URL = "https://github.com/Varon9/vitcht/files/10853806/NDBACHELORS.zip"
 		os.delay(1000)
 		http.download(URL,"ux0:temp/"..FILENAME)
 		if http.download then
@@ -25,6 +24,9 @@ function NUDEBACHELORS()
 					message_wait("\n Instalado con éxito, borrando archivo zip residual... \n")
 					os.delay(1000)
 					files.delete("ux0:temp/"..FILENAME)
+					files.mkdir(Version.."/checks/Nudebachelors")
+					Nudebachelors_check = true
+					dofile("funcion.lua")
 					if files.delete then
 						if back then back:blit(0,0) end
 						wave:blit(1.5,300)
@@ -68,6 +70,9 @@ function NUDEFARMER()
 					message_wait("\n Instalado con éxito, borrando archivo zip residual... \n")
 					os.delay(1000)
 					files.delete("ux0:temp/"..FILENAME)
+					files.mkdir(Version.."/checks/Nudefarmer")
+					Nudefarmer_check = true
+					dofile("funcion.lua")
 					if files.delete then
 						if back then back:blit(0,0) end
 						wave:blit(1.5,300)
@@ -111,6 +116,9 @@ if back then back:blit(0,0) end
 					message_wait("\n Instalado con éxito, borrando archivo zip residual... \n")
 					os.delay(1000)
 					files.delete("ux0:temp/"..FILENAME)
+					files.mkdir(Version.."/checks/Hornybachelors")
+					HornyBachelors_check = true
+					dofile("funcion.lua")
 					if files.delete then
 						if back then back:blit(0,0) end
 						wave:blit(1.5,300)
@@ -154,6 +162,9 @@ if back then back:blit(0,0) end
 					message_wait("\n Instalado con éxito, borrando archivo zip residual... \n")
 					os.delay(1000)
 					files.delete("ux0:temp/"..FILENAME)
+					files.mkdir(Version.."/checks/Pam")
+					Pam_check = true
+					dofile("funcion.lua")
 					if files.delete then
 						if back then back:blit(0,0) end
 						wave:blit(1.5,300)
@@ -188,13 +199,13 @@ end
 		
 --menu
 	menu = {
-		{ text = "Nude Bachelors", desc = "Desnuda a todos los npcs masculinos.", moddesc = "Desnuda a todos los npcs masculinos.\n", imageprev = nudebachelorsprev,	funct = NUDEBACHELORS  },
-		{ text = "Nude Muscular Farmer", desc = "Convierte a tu protagonista masculino en un bodybuilder desnudo.", imageprev = nudefarmermuscledprev, moddesc = "En la pantalla de creación de personaje, con la barra\nde color de los pantalones, puedes cambiar el color\ndel miembro de tu personaje.",	funct = NUDEFARMER},
-		{ text = "Horny Bachelors", desc = "Añade un toque picante al juego", imageprev = hornybachelorsprev, moddesc = "Desnuda a todos los npcs masculinos y les añade tareas como,\npor ejemplo:\n\n-Masturbarse a ciertas horas y en ciertos lugares segun el día\n de la semana.\n\n-Tener encuentros sexuales entre ellos.\n\n-Incesto.\n\nEl mod aún está en desarrollo y esta expuesto a cambios.",	funct = HORNYBACHELORS},
-		{ text = "Pam, despierta, coño!", desc = "Cambia la hora a la que Pam va al bus", imageprev = pamwakeupprev, moddesc = "Archivo de tarea modificado para que Pam vaya al autobús\n a las 06:30.",		funct = PAMWAKEUP  },
+		{ text = "Nude Bachelors", desc = "Desnuda a todos los npcs masculinos.", moddesc = "Desnuda a todos los npcs masculinos.\n", imageprev = nudebachelorsprev, modcheck = Nudebachelors_check,	funct = NUDEBACHELORS  },
+		{ text = "Nude Muscular Farmer", desc = "Convierte a tu protagonista masculino en un bodybuilder desnudo.", imageprev = nudefarmermuscledprev, modcheck = Nudefarmer_check, moddesc = "En la pantalla de creación de personaje, con la barra\nde color de los pantalones, puedes cambiar el color\ndel miembro de tu personaje.",	funct = NUDEFARMER},
+		{ text = "Horny Bachelors", desc = "Añade un toque picante al juego", imageprev = hornybachelorsprev, modcheck = HornyBachelors_check, moddesc = "Desnuda a todos los npcs masculinos y les añade tareas como,\npor ejemplo:\n\n-Masturbarse a ciertas horas y en ciertos lugares segun el día\n de la semana.\n\n-Tener encuentros sexuales entre ellos.\n\n-Incesto.\n\nEl mod aún está en desarrollo y esta expuesto a cambios.",	funct = HORNYBACHELORS},
+		{ text = "Pam, despierta, coño!", desc = "Cambia la hora a la que Pam va al bus", imageprev = pamwakeupprev, modcheck = Pam_check, moddesc = "Archivo de tarea modificado para que Pam vaya al autobús\n a las 06:30.",		funct = PAMWAKEUP  },
 		{ text = "nude bachelorettes", desc = "Instala solo las modificaciones basicas sin contenido sexual", moddesc = "Desnuda a todos los npcs masculinos.",	funct = FFUSA},
 		{ text = "Gayrdew Valley", desc = "Desinstala los mods de la carpeta repatch", moddesc = "Desnuda a todos los npcs masculinos.",	funct = UNINSTALLUSA},
-		{ text = "frungir", desc = "Instala el pack completo con contenido sexual de temática gay", moddesc = "Desnuda a todos los npcs masculinos.",		funct = XXXUSA  },
+		{ text = "Explorar Mods", desc = "Instala el pack completo con contenido sexual de temática gay", moddesc = "Desnuda a todos los npcs masculinos.",		funct = XXXUSA  },
 		{ text = "Mods Básicos", desc = "Instala solo las modificaciones basicas sin contenido sexual", moddesc = "Desnuda a todos los npcs masculinos.",	funct = FFUSA},
 		{ text = "Nude Bachelors", desc = "Desnuda a todos los npcs masculinos.",	 moddesc = "Desnuda a todos los npcs masculinos.",	funct = NUDEBACHELORS  },
 		{ text = "Nude Muscular Farmer", desc = "Convierte a tu protagonista masculino en un bodybuilder desnudo.", moddesc = "Desnuda a todos los npcs masculinos.",	funct = NUDEFARMER},
