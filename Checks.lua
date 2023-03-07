@@ -2,6 +2,7 @@ Nudebachelors_check = nil
 Pam_check = nil
 HornyBachelors_check = nil
 Nudefarmer_check = nil
+GAYRDEWVALLEY_check = nil
 
 --Función checking
 
@@ -21,3 +22,7 @@ end
 if files.exists(Version.."/checks/Hornybachelors") then
 HornyBachelors_check = true
 end
+--Gayrdew Valley menú
+if files.exists(Version.."/checks/GAYRDEWVALLEY") then
+    GAYRDEWVALLEY_check = true
+    end

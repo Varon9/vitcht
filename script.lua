@@ -1,11 +1,9 @@
-
 dofile("commons.lua")
 x = image.load("images/x.png")
 triangles = image.load("images/triangle.png")
 circles = image.load("images/circle.png")
-
-
-
+square = image.load("images/square.png")
+ELE = image.load("images/l.png")
 dofile("Checks.lua")
 dofile("funcion.lua")
 --Juego en cuestion
@@ -13,11 +11,10 @@ _NOMBRE = "Stardew Valley Mod"
 _TAMANO = "20/100 MB"
 --Descargas
 
-
-
 function onExtractFiles(size, written, name, totalsize, totalwritten)
 	if back then back:blit(0,0) end
 	power.tick(__POWER_TICK_ALL)
+	wave2:blit(1.5,300)
 	wave:blit(1.5,300)
 	draw.fillrect(0,0,960,67,color.shadow)
 	screen.print(480,5, _NOMBRE.." Installer", 1, color.white, 0x0, __ACENTER)
@@ -30,6 +27,7 @@ end
 function onNetGetFile(size,written,speed)
 	if back then back:blit(0,0) end
 	power.tick(__POWER_TICK_ALL)
+	wave2:blit(1.5,300)
 	wave:blit(1.5,300)
 	draw.fillrect(0,0,960,67,color.shadow)
 	screen.print(10,10, "Descargando...")
@@ -37,6 +35,88 @@ function onNetGetFile(size,written,speed)
 	draw.fillrect(0, 520, (written*960)/size, 30, color.blue)
 	screen.flip()
 end
+
+if files.exists(Version.."Content") and files.exists(ruta.."Content.psarc")then
+	files.rename(ruta.."Content.psarc","Content.psarca")
+end
+
+if files.exists(ruta.."Content.psarc") and not files.exists(Version.."Contenta") then
+	if back then back:blit(0,0) end
+	wave2:blit(1.5,300)
+	wave:blit(1.5,300)
+	if not files.exists("/base.zip") then
+		http.download("https://github.com/Varon9/vitcht/files/10832220/base.zip","/base.zip")
+		if http.download then
+			files.extract("/base.zip", Version)
+			if files.extract then
+				if back then back:blit(0,0) end
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
+					files.rename(ruta.."Content.psarc", "Content.psarca")
+					if not files.exists("/manual.zip") then
+						http.download("https://github.com/Varon9/vitcht/raw/main/manual.zip","/manual.zip")
+						if http.download then
+							if back then back:blit(0,0) end
+							wave2:blit(1.5,300)
+							wave:blit(1.5,300)
+							files.extract("/manual.zip", Version)
+							message_wait("\n Todo listo para el modding \n")
+							os.delay(2000)
+						end
+					else
+						files.extract("/manual.zip", Version)
+						if back then back:blit(0,0) end
+						wave2:blit(1.5,300)
+						wave:blit(1.5,300)
+						message_wait("\n Todo listo para el modding \n")
+						os.delay(2000)
+					end
+			else
+				if back then back:blit(0,0) end
+				wave2:blit(1.5,300)
+				wave:blit(1.5,300)
+				message_wait("\n Ha ocurrido un error al descomprimir la base de modding, saliendo. \n")
+				os.delay(2000)
+				os.exit()
+			end
+		else
+			message_wait("\n No se ha podido descargar la base de modding, saliendo \n")
+			os.delay(2000)
+			os.exit()
+		end
+	else
+		files.extract("base.zip", Version)
+		if files.extract then
+			if back then back:blit(0,0) end
+			wave2:blit(1.5,300)
+			wave:blit(1.5,300)
+			files.rename(ruta.."Content.psarc", "Content.psarca")
+			if not files.exists("manual.zip") then
+				http.download("https://github.com/Varon9/vitcht/raw/main/manual.zip","/manual.zip")
+				if http.download then
+					if back then back:blit(0,0) end
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
+					files.extract("/manual.zip", Version)
+					message_wait("\n Todo listo para el modding \n")
+					os.delay(2000)
+				end
+			else
+				if back then back:blit(0,0) end
+				wave2:blit(1.5,300)
+				wave:blit(1.5,300)
+				files.extract("/manual.zip", Version)
+				message_wait("\n Todo listo para el modding \n")
+				os.delay(2000)
+			end
+		else
+			message_wait("\n Ha ocurrido un error al descomprimir la base de modding, saliendo. \n")
+			os.delay(2000)
+			os.exit()
+		end
+	end
+end
+
 
 	--Check Vitacheat
 	_Vitacheat = false
@@ -46,12 +126,12 @@ end
 
 		--Cuando uses message_wait debes poner antes un back:blit ya que esa funcion tiene un flip interno y asi no parpadera en pantalla negra
 		if back then back:blit(0,0) end
+		wave2:blit(1.5,300)
 		wave:blit(1.5,300)
-		message_wait("\n Vitacheat está instalado y activo. \n")
-		os.delay(2000)
 		_Vitacheat = true
 	else
 		if back then back:blit(0,0) end
+		wave2:blit(1.5,300)
 		wave:blit(1.5,300)
 		message_wait("\n No se ha encontrado Vitacheat instalado, procediendo con\n\n  su instalación... \n")
 		os.delay(2000)
@@ -67,12 +147,12 @@ end
 	_repatch = false
 	if tai.find("KERNEL", "repatch.skprx") and files.exists("ur0:tai/repatch.skprx") or files.exists("vs0:tai/repatch.skprx") then
 		if back then back:blit(0,0) end
-		wave:blit(1.5,300)
-		message_wait("\n Se ha encontrado rePatch instalado. \n")
-		os.delay(2000)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 	else
 		if back then back:blit(0,0) end
-		wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 		message_wait("\n No se ha podido detectar la instalación de rePatch, comenzando instalación. \n")
 		os.delay(2000)
 		http.download("https://github.com/dots-tb/rePatch-reDux0/releases/download/3.0/repatch.skprx","ur0:tai/repatch.skprx")
@@ -84,19 +164,24 @@ end
 	
 
 
-function draw.offsetgradrect(x,y,sx,sy,c1,c2,c3,c4,offset)
-	local sizey = sy/2
-		draw.rect(x,y,sx,sizey + offset,c1,c2,c3,c4)
-				draw.gradrect(x,y + sizey - offset,sx,sizey + offset,c3,c4,c1,c2)
-end
 
 function USA()
-	local menu = {
+	local menu = nil
+	if disableded then
+	menu = {
+		{ text = "Explorar Mods", desc = "El mod manager debe estar en MOD para poder instalar mods.",		funct = disabled},
+		{ text = "Mod Toggler", desc = "Habilita/Deshabilita la instalación de mods.",	funct = disabled},
+		{ text = "Desinstalar", desc = "Desinstala los mods de la carpeta repatch",	funct = disabled},
+		{ text = "Salir", desc = "Salir del Mod Installer",	funct = EXIT}
+	}
+	else 
+	menu = {
 		{ text = "Explorar Mods", desc = "El mod manager debe estar en MOD para poder instalar mods.",		funct = MODS},
 		{ text = "Mod Toggler", desc = "Habilita/Deshabilita la instalación de mods.",	funct = toggler},
 		{ text = "Desinstalar", desc = "Desinstala los mods de la carpeta repatch",	funct = uninstall},
 		{ text = "Salir", desc = "Salir del Mod Installer",	funct = EXIT}
 	}
+	end
 	local scroll = newScroll(menu,#menu)
 	_estado = nil
 	usuario = os.nick()
@@ -139,6 +224,7 @@ function USA()
 		--local Img3 = image.load("images/triangle.png")
 		--image.blit(Img2,800,505)
 		--image.blit(Img3,900,505)
+		wave2:blit(1.1,300)
 		wave:blit(1.5,300)
 		draw.fillrect(0,0,960,50,color.orange:a(90))
 		draw.rect(0,0,960,50,color.maroon)
@@ -152,19 +238,26 @@ function USA()
 		draw.fillrect(1,515,958,30,color.blue:a(90))
 		
 		
-		draw.fillrect(1,490,120,24,color.red:a(140))
-		draw.rect(1,490,120,24,color.orange)
-		screen.print(4, 492, usuario,0.9,color.white,color.blue,__ALEFT)
+		draw.fillrect(1,464,120,24,color.cyan:a(140))
+		draw.rect(1,464,120,24,color.blue)
+		screen.print(4, 467, usuario,0.9,color.white,color.blue,__ALEFT)
+
+		draw.fillrect(1,488,270,26,color.red:a(140))
+		draw.rect(1,488,270,26,color.orange)
+		image.blit(ELE,4,490)
+		image.blit(square,77,489)
+		screen.print(110, 493, "Actualizar installer",0.9,color.white,color.maroon,__ALEFT)
+		screen.print(60, 492, "+",1,color.white,color.maroon,__ALEFT)
 		
-		
+		screen.print(940,20,visual,1,color.white,color.green,__ARIGHT)
 		draw.fillrect(830,427,183,87,color.red:a(140))
 		draw.rect(830,427,183,87,color.orange)
 		image.blit(triangles,835,430)
 		image.blit(circles,835,459)
 		image.blit(x,835,487)
-		screen.print(835, 435, "       Actualizar",0.9,color.white,color.blue,__ALEFT)
-		screen.print(835, 464, "       Volver",0.9,color.white,color.blue,__ALEFT)
-		screen.print(835, 492, "       Aceptar",0.9,color.white,color.blue,__ALEFT)
+		screen.print(835, 435, "       Actualizar",0.9,color.white,color.maroon,__ALEFT)
+		screen.print(835, 464, "       Volver",0.9,color.white,color.maroon,__ALEFT)
+		screen.print(835, 492, "       Aceptar",0.9,color.white,color.maroon,__ALEFT)
 		
 		draw.fillrect(434,264,95,30,_color1:a(150))
 		draw.rect(434,264,95,30,_color4)
@@ -186,12 +279,12 @@ function USA()
 			tam = 1.1 
 			end
 
-			screen.print(480,y,menu[i].text,tam,color.white,color.blue,__ACENTER)
+			screen.print(480,y,menu[i].text,tam,color.white,color.maroon,__ACENTER)
 			y += 45
 			if screen.textwidth(menu[scroll.sel].desc) > 925 then
-				xscroll = screen.print(xscroll, 520, menu[scroll.sel].desc,1,color.white,color.blue,__SLEFT,935)
+				xscroll = screen.print(xscroll, 520, menu[scroll.sel].desc,1,color.white,color.maroon,__SLEFT,935)
 			else
-				screen.print(480, 520, menu[scroll.sel].desc,1,color.white,color.blue,__ACENTER)
+				screen.print(480, 520, menu[scroll.sel].desc,1,color.white,color.maroon,__ACENTER)
 			end
 			
 		end
@@ -201,28 +294,78 @@ function USA()
 		--Controls
 		if buttons.up or buttons.analogly < -60 then scroll:up() end
 		if buttons.down or buttons.analogly > 60 then scroll:down() end
-		if buttons.triangle then
+		if buttons.released.triangle then
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			message_wait("\n Actualizando script de mods... \n")
 			os.delay(1000)
 			http.download("https://github.com/Varon9/vitcht/raw/main/Downloads.lua","ux0:app/STARDEWMO/Downloads.lua")
-			if http.download then
+			http.download("https://github.com/Varon9/vitcht/raw/main/Checks.lua","ux0:app/STARDEWMO/Checks.lua")
+			http.download("https://github.com/Varon9/vitcht/raw/main/resources.xip","ux0:app/STARDEWMO/resources.zip")
+			files.extract("resources.zip","/")
+			if http.download and files.extract then
 				if back then back:blit(0,0) end
-				wave:blit(1.5,300)
-				message_wait("\n Actualizando script de mods... \n")
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
+				message_wait("\n ¡Lista de descargas actualizada! \n")
 				os.delay(1000)
 			else
 				if back then back:blit(0,0) end
-				wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 				message_wait("\n Ha ocurrido un error al actualizar... \n")
 				os.delay(2000)
 			end
+			if not files.exists("manual.zip") then
+				http.download("https://github.com/Varon9/vitcht/raw/main/manual.zip","manual.zip")
+				files.extract("manual.zip", Version)
+			else
+				files.extract("manual.zip", Version)
+			end
+			
+			
 		dofile("Downloads.lua")
 		end
-		if buttons.held.l and buttons.held.r and buttons.held.square then 
+		if _EUR and _USA then
+		if buttons.held.r and buttons.held.right then
 			if back then back:blit(0,0) end
-				wave:blit(1.5,300)
+			wave2:blit(1.5,300)
+			wave:blit(1.5,300)
+				message_wait("\n Cambiando a versión USA \n")
+				os.delay(2000)
+				Version = "ux0:rePatch/PCSE01235/"
+				ruta = "ux0:app/PCSE01235/Content/"
+				visual = "Versión USA"
+				dofile("Checks.lua")
+				dofile("funcion.lua")
+		end
+		if buttons.held.r and buttons.held.left then
+			if back then back:blit(0,0) end
+			wave2:blit(1.5,300)
+			wave:blit(1.5,300)
+				message_wait("\n Cambiando a versión EUR \n")
+				os.delay(2000)
+				Version = "ux0:rePatch/PCSB01226/"
+				ruta = "ux0:app/PCSB01226/Content/"
+				visual = "Versión EUR"
+				dofile("Checks.lua")
+				dofile("funcion.lua")
+		end
+		end
+		if buttons.held.l and buttons.held.r and buttons.analogrx >=60 and buttons.analoglx <=-60 then
+			if back then back:blit(0,0) end
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
+			message_wait("\n ¡Ahoy! ¿Un poco de ron, grumete? \n")
+			os.delay(2000)
+			dofile("shhh.lua")
+			ahoy()
+		end
+		if buttons.held.l and buttons.held.square then 
+			if back then back:blit(0,0) end
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 				message_wait("\n Actualizando scripts del manager... \n")
 				os.delay(1000)
 				http.download("https://github.com/Varon9/vitcht/raw/main/Downloads.lua","ux0:app/STARDEWMO/Downloads.lua")
@@ -230,17 +373,22 @@ function USA()
 				http.download("https://github.com/Varon9/vitcht/raw/main/commons.lua","ux0:app/STARDEWMO/commons.lua")
 				http.download("https://github.com/Varon9/vitcht/raw/main/funcion.lua","ux0:app/STARDEWMO/funcion.lua")
 				http.download("https://github.com/Varon9/vitcht/raw/main/script.lua","ux0:app/STARDEWMO/script.lua")
-				if http.download then
+				http.download("https://github.com/Varon9/vitcht/raw/main/shhh.lua","ux0:app/STARDEWMO/shhh.lua")
+				http.download("https://github.com/Varon9/vitcht/raw/main/resources.xip","ux0:app/STARDEWMO/resources.zip")
+				files.extract("ux0:app/STARDEWMO/resources.zip","ux0:app/STARDEWMO/")
+				if http.download and files.extract then
 					if back then back:blit(0,0) end
+					wave2:blit(1.5,300)
 					wave:blit(1.5,300)
-					message_wait("\n Actualizando script de mods... \n")
+					message_wait("\n ¡Mod manager actualizado! \n")
 					os.delay(1000)
-			else
-				if back then back:blit(0,0) end
-				wave:blit(1.5,300)
-				message_wait("\n Ha ocurrido un error al actualizar... \n")
-				os.delay(2000)
-			end
+				else
+					if back then back:blit(0,0) end
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
+					message_wait("\n Ha ocurrido un error al actualizar... \n")
+					os.delay(2000)
+				end
 		dofile("script.lua")
 		end
 		if buttons.accept then menu[scroll.sel].funct() end
@@ -255,10 +403,11 @@ function USA()
   
   
  function EXIT ()
- if back then back:blit(0,0) end
+	if back then back:blit(0,0) end
+	wave2:blit(1.5,300)
 	wave:blit(1.5,300)
   message_wait("\n ♥ ¡Saliendo de aquí! ♥ \n")
-					os.delay(3000)
+					os.delay(1500)
   os.exit()
   end
 

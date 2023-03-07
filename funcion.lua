@@ -1,50 +1,47 @@
-wave:begin("wave.png")--AQui te fallaba el wavw porque la png esta en la carpeta install y solo tenias wave:begin("wave.png")
 color.loadpalette()
-
-
-
-
-
-
 dofile("Downloads.lua")
 dofile("Checks.lua")
 
-
-function draw.offsetgradrect(x,y,sx,sy,c1,c2,c3,c4,offset)
-	local sizey = sy/2
-		draw.rect(x,y,sx,sizey + offset,c1,c2,c3,c4)
-				draw.gradrect(x,y + sizey - offset,sx,sizey + offset,c3,c4,c1,c2)
-end
 function toggler()
 	if not files.exists(ruta.."Content.psarc") and not files.exists(Version.."Content/Content.psarc") then
 		if back then back:blit(0,0) end
-		wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 		message_wait("\n Deshabilitando mods. \n")
 		os.delay(1000)
 		if files.exists(ruta.."Content.psarca") then
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			files.rename(ruta.."Content.psarca", "Content.psarc")
 			files.rename(Version.."Content", "Contenta")
+			files.rename(Version.."sce_sys", "sce")
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			message_wait("\n Mods deshabilitados con éxito. \n")
 			os.delay(2000)
+			dofile("checks.lua")
 		else
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			message_wait("No se ha encontrado el backup del juego,ndescargando base de emergencia. \n")
 			os.delay(2000)
 			files.rename(Version.."Content", "Contenta")
+			files.rename(Version.."sce_sys", "sce")
 			http.download("https://github.com/Varon9/vitcht/files/10842340/Basepsarc.zip",Version.."Content/Content.psarc")
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			message_wait("\n Mods deshabilitados con éxito. \n")
 			os.delay(2000)
+			dofile("checks.lua")
 		end
 	else
 		if back then back:blit(0,0) end
-		wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 		message_wait("\n Habilitando mods. \n")
 		os.delay(2000)
 		if files.exists(Version.."Contenta") and files.exists(Version.."Content") then
@@ -53,37 +50,59 @@ function toggler()
 		
 		if files.exists(Version.."Contenta")then
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
+			files.rename(Version.."sce", "sce_sys")
 			files.rename(Version.."Contenta", "Content")
 			if files.exists(ruta.."Content.psarc")then 
 			files.rename(ruta.."Content.psarc","Content.psarca")
 			end
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			message_wait("\n Mods habilitados con éxito. \n")
 			os.delay(2000)
+			dofile("checks.lua")
 		else
 			if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 			message_wait("No se ha encontrado instalación anterior de mods,\ndescargando base. \n")
 			os.delay(2000)
-			http.download("https://github.com/Varon9/vitcht/files/10832220/base.zip","ux0:tmp/base.zip")
-			files.extract("ux0:tmp/base.zip", Version)
+			if not files.exists("base.zip") then
+				http.download("https://github.com/Varon9/vitcht/files/10832220/base.zip","base.zip")
+				files.extract("base.zip", Version)
+				if not files.exists("manual.zip") then
+					http.download("https://github.com/Varon9/vitcht/raw/main/manual.zip","manual.zip")
+					files.extract("manual.zip", Version)
+				else
+						files.extract("/manual.zip", Version)
+				end
+			else
+				files.extract("base.zip", Version)
+				if not files.exists("manual.zip") then
+					http.download("https://github.com/Varon9/vitcht/raw/main/manual.zip","/manual.zip")
+					files.extract("manual.zip", Version)
+				else
+						files.extract("manual.zip", Version)
+				end
+			end
 			if files.extract then
 				if back then back:blit(0,0) end
-				wave:blit(1.5,300)
-				files.delete("ux0:tmp/base.zip")
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 				if files.exists(ruta.."Content.psarc")then 
 				files.rename(ruta.."Content.psarc","Content.psarca")
 				end
 				if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 				message_wait("\n Mods habilitados con éxito \n")
 				os.delay(2000)
+				dofile("checks.lua")
 			end
 		end
-	end
-		
+	end		
 end
 
 function MODS()
@@ -102,10 +121,9 @@ if _tristate then
 		if change or ReloadConfig then buttons.homepopup(0) else buttons.homepopup(1) end
 
 		if back then back:blit(0,0) end
-		if snow then stars.render() end
-		wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 		local descripcion = 500
-
 		draw.fillrect(0,0,960,50,color.orange:a(90))
 		draw.rect(0,0,960,50,color.maroon)
 		--draw.offsetgradrect(0,0,960,55,color.shine:a(85),color.shine:a(135),0x0,0x0,20)
@@ -180,8 +198,9 @@ if _tristate then
 	end
 
  else
- if back then back:blit(0,0) end
-		wave:blit(1.5,300)
+	if back then back:blit(0,0) end
+	wave2:blit(1.5,300)
+	wave:blit(1.5,300)
 		message_wait("\n El mod manager está en modo 'vanilla', cambiando a modo 'Mod' \n")
 		os.delay(2000)
 		toggler()
@@ -193,41 +212,52 @@ end
 function uninstall()
 if files.exists(ruta.."Content.psarca") then
 	if back then back:blit(0,0) end
-	wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 	message_wait("Desinstalando mods, por favor, espera... \n")
 	os.delay(2000)
 	files.rename(ruta.."Content.psarca", "Content.psarc")
 	files.delete(Version.."Content")
 	files.delete(Version.."Contenta")
 	files.delete(Version.."checks")
+	files.delete(Version.."sce_sys")
+	files.delete(Version.."sce")
 	if back then back:blit(0,0) end
-	wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 	message_wait("Mods desinstalados con éxito. \n")
 	os.delay(2000)
 	dofile("funcion.lua")
 else
 	if not files.exists(ruta.."Content.psarc") then
-	if back then back:blit(0,0) end
-			wave:blit(1.5,300)
+		if back then back:blit(0,0) end
+		wave2:blit(1.5,300)
+		wave:blit(1.5,300)
 			message_wait("No se ha encontrado el backup del juego,\ndescargando base de emergencia. \n")
 			os.delay(2000)
 			files.delete(Version.."Content")
 			files.delete(Version.."Contenta")
 			files.delete(Version.."checks")
+			files.delete(Version.."sce_sys")
+			files.delete(Version.."sce_sys_old")
 			http.download("https://github.com/Varon9/vitcht/files/10842340/Basepsarc.zip",Version.."Content/Content.psarc")
 			if back then back:blit(0,0) end
 			wave:blit(1.5,300)
 			message_wait("\n Mods desinstalados con éxito. \n")
 			os.delay(2000)
 	else
-	if back then back:blit(0,0) end
-	wave:blit(1.5,300)
+		if back then back:blit(0,0) end
+		wave2:blit(1.5,300)
+		wave:blit(1.5,300)
 	message_wait("Desinstalando mods, por favor, espera... \n")
 	os.delay(2000)
 	files.delete(Version.."Content")
 	files.delete(Version.."Contenta")
+	files.delete(Version.."sce_sys")
+	files.delete(Version.."sce_sys_old")
 	if back then back:blit(0,0) end
-	wave:blit(1.5,300)
+					wave2:blit(1.5,300)
+					wave:blit(1.5,300)
 	message_wait("\n Mods desinstalados con éxito. \n")
 	os.delay(2000)
 	dofile("funcion.lua")
