@@ -122,6 +122,7 @@ end
 if not files.exists("resources") then
 	http.download("https://github.com/Varon9/vitcht/raw/main/resources.xip","resources.zip")
 	files.extract("resources.zip","/")
+	files.delete("resources.zip")
 	dofile("Downloads.lua")
 end
 
@@ -360,6 +361,7 @@ function USA()
 				visual = "Versión USA"
 				dofile("Checks.lua")
 				dofile("funcion.lua")
+				dofile("Downloads.lua")
 		end
 		if buttons.held.r and buttons.held.left then
 			if back then back:blit(0,0) end
@@ -372,6 +374,7 @@ function USA()
 				visual = "Versión EUR"
 				dofile("Checks.lua")
 				dofile("funcion.lua")
+				dofile("Downloads.lua")
 		end
 		end
 		if buttons.held.l and buttons.held.r and buttons.analogrx >=60 and buttons.analoglx <=-60 then

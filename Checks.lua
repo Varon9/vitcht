@@ -1,9 +1,12 @@
 Nudebachelors_check = nil
-Pam_check = nil
+PAMWAKEUP_check = nil
 HornyBachelors_check = nil
 Nudefarmer_check = nil
 GAYRDEWVALLEY_check = nil
 EASYFISHING_check = nil
+DEVIOUSFURNITURE_check = nil
+AMBROSIA_check = nil
+
 
 --Función checking
 
