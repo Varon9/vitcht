@@ -38,10 +38,19 @@ function onNetGetFile(size,written,speed)
 	draw.fillrect(0, 520, (written*960)/size, 30, color.blue)
 	screen.flip()
 end
+if not files.exist(Version.."sce_sys/manual") then
+if not files.exists("manual.zip") then
+	http.download("https://github.com/Varon9/vitcht/raw/main/manual.zip","manual.zip")
+	files.extract("manual.zip", Version)
+else
+		files.extract("/manual.zip", Version)
+end
+end
 
 if files.exists(Version.."Content") and files.exists(ruta.."Content.psarc")then
 	files.rename(ruta.."Content.psarc","Content.psarca")
 end
+
 
 if files.exists(ruta.."Content.psarc") and not files.exists(Version.."Contenta") then
 	if back then back:blit(0,0) end
