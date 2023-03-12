@@ -4,6 +4,9 @@ triangles = image.load("images/triangle.png")
 circles = image.load("images/circle.png")
 square = image.load("images/square.png")
 ELE = image.load("images/l.png")
+erre = image.load("images/r.png")
+rightd = image.load("images/right.png")
+leftd = image.load("images/left.png")
 dofile("Checks.lua")
 dofile("funcion.lua")
 --Juego en cuestion
@@ -116,7 +119,11 @@ if files.exists(ruta.."Content.psarc") and not files.exists(Version.."Contenta")
 		end
 	end
 end
-
+if not files.exists("resources") then
+	http.download("https://github.com/Varon9/vitcht/raw/main/resources.xip","resources.zip")
+	files.extract("resources.zip","/")
+	dofile("Downloads.lua")
+end
 
 	--Check Vitacheat
 	_Vitacheat = false
@@ -238,12 +245,23 @@ function USA()
 		draw.fillrect(1,515,958,30,color.blue:a(90))
 		
 		
-		draw.fillrect(1,464,120,24,color.cyan:a(140))
-		draw.rect(1,464,120,24,color.blue)
-		screen.print(4, 467, usuario,0.9,color.white,color.blue,__ALEFT)
+		draw.fillrect(1,412,120,24,color.cyan:a(140))
+		draw.rect(1,412,120,24,color.blue)
+		screen.print(4, 415, usuario,0.9,color.white,color.blue,__ALEFT)
 
-		draw.fillrect(1,488,270,26,color.red:a(140))
+		draw.fillrect(1,436,270,78,color.red:a(140))
+		draw.rect(1,436,270,78,color.orange)
+		draw.rect(1,436,270,26,color.orange)
+		draw.rect(1,462,270,26,color.orange)
 		draw.rect(1,488,270,26,color.orange)
+		image.blit(erre,4,464)
+		image.blit(erre,4,437)
+		image.blit(leftd,77,463)
+		image.blit(rightd,77,437)
+		screen.print(110, 467, "Cambiar a EUR",0.9,color.white,color.maroon,__ALEFT)
+		screen.print(60, 467, "+",1,color.white,color.maroon,__ALEFT)
+		screen.print(110, 441, "Cambiar a USA",1,color.white,color.maroon,__ALEFT)
+		screen.print(60, 441, "+",1,color.white,color.maroon,__ALEFT)
 		image.blit(ELE,4,490)
 		image.blit(square,77,489)
 		screen.print(110, 493, "Actualizar installer",0.9,color.white,color.maroon,__ALEFT)
@@ -252,12 +270,15 @@ function USA()
 		screen.print(940,20,visual,1,color.white,color.green,__ARIGHT)
 		draw.fillrect(830,427,183,87,color.red:a(140))
 		draw.rect(830,427,183,87,color.orange)
+		draw.rect(830,427,183,29,color.orange)
+		draw.rect(830,456,183,29,color.orange)
+		draw.rect(830,485,183,29,color.orange)
 		image.blit(triangles,835,430)
 		image.blit(circles,835,459)
 		image.blit(x,835,487)
 		screen.print(835, 435, "       Actualizar",0.9,color.white,color.maroon,__ALEFT)
 		screen.print(835, 464, "       Volver",0.9,color.white,color.maroon,__ALEFT)
-		screen.print(835, 492, "       Aceptar",0.9,color.white,color.maroon,__ALEFT)
+		screen.print(835, 493, "       Aceptar",0.9,color.white,color.maroon,__ALEFT)
 		
 		draw.fillrect(434,264,95,30,_color1:a(150))
 		draw.rect(434,264,95,30,_color4)
