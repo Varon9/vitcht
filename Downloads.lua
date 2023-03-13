@@ -18,6 +18,8 @@ gayrdewprev = image.load("previews/gayrdewvalley.png")
 EASYFISHINGPREV = image.load("previews/easyfishing.png")
 DEVIOUSFURNITUREPREV = image.load("previews/deviousfurniture.png")
 AMBROSIAPREV = image.load("previews/ambrosia.png")
+TRANSLUCENTUIPREV = image.load("previews/translucentui.png")
+OPENTHEDOORPREV = image.load("previews/openthedoor.png")
 
 
 function manual()
@@ -51,7 +53,7 @@ end
 --descargas
 function NUDEBACHELORS()
 	local name = "NUDEBACHELORS"
-	local URL = "https://github.com/Varon9/vitcht/files/10853806/NDBACHELORS.zip"
+	local URL = "https://github.com/Varon9/vitcht/files/10960748/NDBACHELORS.zip"
 	checka = Nudebachelors_check
 	local routedfilename = "/mods/NUDEBACHELORS.zip"
 	if files.exists(routedfilename) then
@@ -249,7 +251,7 @@ end
 
 function HORNYBACHELORS()
 	local name = "HornyBachelors"
-	local URL = "https://github.com/Varon9/vitcht/files/10834352/HornyBachel.zip"
+	local URL = "https://github.com/Varon9/vitcht/files/10960796/HornyBachel.zip"
 	checka = HornyBachelors_check
 	local routedfilename = "/mods/HornyBachelors.zip"
 	if files.exists(routedfilename) then
@@ -840,6 +842,205 @@ function AMBROSIA()
 			end
 	
 end
+
+function TRANSLUCENTUI()
+	local name = "TRANSLUCENTUI"
+	local URL = "https://github.com/Varon9/vitcht/files/10961725/TRANSLUCENTUI.zip"
+	local routedfilename = "/mods/TRANSLUCENTUI.zip"
+	checka = TRANSLUCENTUI_check
+	if files.exists(routedfilename) then
+		files.extract(routedfilename,Version)
+			if files.extract then
+				if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Instalado con éxito.\n")
+					os.delay(1000)
+					files.mkdir(Version.."/checks/"..name)
+					concrete = "/resources/"..name.."/"
+					resource1 = "000.png"
+					resource2 = "001.png"
+					resource3 = "002.png"
+					manual()
+					TRANSLUCENTUI_check = true
+					dofile("funcion.lua")
+					MODS()
+			else
+					if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Comenzando la descarga... \n")
+					os.delay(1000)
+					http.download(URL,routedfilename)
+					if http.download then
+						files.extract(routedfilename,Version)
+						if files.extract then
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Instalado con éxito.\n")
+							os.delay(1000)
+							files.mkdir(Version.."/checks/"..name)
+							concrete = "/resources/"..name.."/"
+							resource1 = "000.png"
+							resource2 = "001.png"
+							resource3 = "002.png"
+							manual()
+							TRANSLUCENTUI_check = true
+							dofile("funcion.lua")
+							MODS()
+						else
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Se ha producido un error en la extracción, volviendo al menú... \n")
+							os.delay(1000)
+							MODS()
+						end
+					else
+						if back then back:blit(0,0) end
+						wave:blit(1.5,300)
+						message_wait("\n Se ha producido un error en la descarga \n")
+						os.delay(1000)
+						MODS()
+					end
+			end
+	
+	else
+		if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Comenzando la descarga... \n")
+					os.delay(1000)
+					http.download(URL,routedfilename)
+					if http.download then
+						files.extract(routedfilename,Version)
+						if files.extract then
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Instalado con éxito.\n")
+							os.delay(1000)
+							files.mkdir(Version.."/checks/"..name)
+							concrete = "/resources/"..name.."/"
+							resource1 = "000.png"
+							resource2 = "001.png"
+							resource3 = "002.png"
+							manual()
+							TRANSLUCENTUI_check = true
+							dofile("funcion.lua")
+							MODS()
+						else
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Se ha producido un error en la extracción, volviendo al menú... \n")
+							os.delay(1000)
+							MODS()
+						end
+					else
+						if back then back:blit(0,0) end
+						wave:blit(1.5,300)
+						message_wait("\n Se ha producido un error en la descarga \n")
+						os.delay(1000)
+						MODS()
+					end
+			end
+	
+end
+
+
+function OPENTHEDOOR()
+	local name = "OPENTHEDOOR"
+	local URL = "https://github.com/Varon9/vitcht/files/10961497/OPENTHEDOOR.zip"
+	local routedfilename = "/mods/OPENTHEDOOR.zip"
+	checka = OPENTHEDOOR_check
+	if files.exists(routedfilename) then
+		files.extract(routedfilename,Version)
+			if files.extract then
+				if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Instalado con éxito.\n")
+					os.delay(1000)
+					files.mkdir(Version.."/checks/"..name)
+					concrete = "/resources/"..name.."/"
+					resource1 = "000.png"
+					resource2 = "001.png"
+					resource3 = "002.png"
+					manual()
+					OPENTHEDOOR_check = true
+					dofile("funcion.lua")
+					MODS()
+			else
+					if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Comenzando la descarga... \n")
+					os.delay(1000)
+					http.download(URL,routedfilename)
+					if http.download then
+						files.extract(routedfilename,Version)
+						if files.extract then
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Instalado con éxito.\n")
+							os.delay(1000)
+							files.mkdir(Version.."/checks/"..name)
+							concrete = "/resources/"..name.."/"
+							resource1 = "000.png"
+							resource2 = "001.png"
+							resource3 = "002.png"
+							manual()
+							OPENTHEDOOR_check = true
+							dofile("funcion.lua")
+							MODS()
+						else
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Se ha producido un error en la extracción, volviendo al menú... \n")
+							os.delay(1000)
+							MODS()
+						end
+					else
+						if back then back:blit(0,0) end
+						wave:blit(1.5,300)
+						message_wait("\n Se ha producido un error en la descarga \n")
+						os.delay(1000)
+						MODS()
+					end
+			end
+	
+	else
+		if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Comenzando la descarga... \n")
+					os.delay(1000)
+					http.download(URL,routedfilename)
+					if http.download then
+						files.extract(routedfilename,Version)
+						if files.extract then
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Instalado con éxito.\n")
+							os.delay(1000)
+							files.mkdir(Version.."/checks/"..name)
+							concrete = "/resources/"..name.."/"
+							resource1 = "000.png"
+							resource2 = "001.png"
+							resource3 = "002.png"
+							manual()
+							OPENTHEDOOR_check = true
+							dofile("funcion.lua")
+							MODS()
+						else
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Se ha producido un error en la extracción, volviendo al menú... \n")
+							os.delay(1000)
+							MODS()
+						end
+					else
+						if back then back:blit(0,0) end
+						wave:blit(1.5,300)
+						message_wait("\n Se ha producido un error en la descarga \n")
+						os.delay(1000)
+						MODS()
+					end
+			end
+	
+end
 		
 --menu
 	menu = {
@@ -850,6 +1051,9 @@ end
 		{ text = "Gayrdew Valley", desc = "Modifica el menú principal", imageprev = gayrdewprev, modcheck = GAYRDEWVALLEY_check, moddesc = "Modifica el menú principal:\n\n-Nombre del juego\n\n-Botones de Nueva partida y Cargar partida\n\n-Logo de Concerned Ape al hacerle click en la cara.",	funct = GAYRDEWVALLEY},
 		{ text = "Easy Fishing", desc = "¿Te rompe las bolas el mini juego de pesca?", imageprev = EASYFISHINGPREV, modcheck = EASYFISHING_check, moddesc = "Si tú, al igual que polo, estás hart@ del minijuego de pesca\naquí tienes la solución:\n\n¡Convierte a todos los peces en zombis y deja de cagarte en\ndios cada vez que se te escapan!\n\nSe han modificado TODOS los peces para que a penas se muevan\nen el mini juego",	funct = EASYFISHING},
 		{ text = "Devious Furniture", desc = "Dale un toque picante al mobiliario", imageprev = DEVIOUSFURNITUREPREV, modcheck = DEVIOUSFURNITURE_check, moddesc = "Añade un toque picante al juego sustituyendo el\nmobiliario del juego por escenas explícitas.\n\n-Muebles\n\n-Cuadros\n\n-Estatuas\n\n-¡Hasta los espantapájaros!",	funct = DEVIOUSFURNITURE},
-		{ text = "Ambrosía Divina", desc = "¿Quieres sabes que se siente al comer como un dios?", imageprev = AMBROSIAPREV, modcheck = AMBROSIA_check, moddesc = "Sustituye el Almuerzo de la suerte por algo más...divíno.\nPrueba la comida de un dios, y siéntete como tal durante un día.\n\n-Velocidad\n\n-Magnetismo\n\n-Pesca\n\n-Y un largo etc.",	funct = AMBROSIA}
+		{ text = "Ambrosía Divina", desc = "¿Quieres sabes que se siente al comer como un dios?", imageprev = AMBROSIAPREV, modcheck = AMBROSIA_check, moddesc = "Sustituye el Almuerzo de la suerte por algo más...divíno.\nPrueba la comida de un dios, y siéntete como tal durante un día.\n\n-Velocidad\n\n-Magnetismo\n\n-Pesca\n\n-Y un largo etc.",	funct = AMBROSIA},
+		{ text = "Translucent UI", desc = "¿Te molesta la interfaz del juego?", imageprev = TRANSLUCENTUIPREV, modcheck = TRANSLUCENTUI_check, moddesc = "Reduce drásticamente la opacidad de la interfaz de usuario.\n\n-Las barras de vida y energía no se pueden editar.\n\n-Toda la zona del reloj, dinero, etc menos invasivas.\n\n-Opacidad de la barra de herramientas reducida al 65%",	funct = TRANSLUCENTUI},
+		{ text = "¡Abreme la puerta!", desc = "¿Qué somos, amish?", imageprev = OPENTHEDOORPREV, modcheck = OPENTHEDOOR_check, moddesc = "¿Cada vez que te paseas por pueblo pelícano, sientes que vives\n en una comuna amish? Con este mod podrás violar la intimidad\n de estos amish...\n\n-Todos los edificios del juego abren de 06:00 a 00:00.",	funct = OPENTHEDOOR}
+		
 		
 	}

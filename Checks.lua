@@ -41,4 +41,12 @@ if files.exists(Version.."/checks/DEVIOUSFURNITURE") then
 --Ambrosia
 if files.exists(Version.."/checks/AMBROSIA") then
     AMBROSIA_check = true
+end
+--TranslucentUI
+    if files.exists(Version.."/checks/TRANSLUCENTUI") then
+        TRANSLUCENTUI_check = true
+        end
+--TranslucentUI
+if files.exists(Version.."/checks/OPENTHEDOOR") then
+    OPENTHEDOOR_check = true
     end
