@@ -20,6 +20,7 @@ DEVIOUSFURNITUREPREV = image.load("previews/deviousfurniture.png")
 AMBROSIAPREV = image.load("previews/ambrosia.png")
 TRANSLUCENTUIPREV = image.load("previews/translucentui.png")
 OPENTHEDOORPREV = image.load("previews/openthedoor.png")
+HOTBARNPREV = image.load("previews/hotbarn.png")
 
 
 function manual()
@@ -53,7 +54,7 @@ end
 --descargas
 function NUDEBACHELORS()
 	local name = "NUDEBACHELORS"
-	local URL = "https://github.com/Varon9/vitcht/files/10960748/NDBACHELORS.zip"
+	local URL = "https://github.com/Varon9/vitcht/files/10970449/NDBACHELORS.zip"
 	checka = Nudebachelors_check
 	local routedfilename = "/mods/NUDEBACHELORS.zip"
 	if files.exists(routedfilename) then
@@ -251,7 +252,7 @@ end
 
 function HORNYBACHELORS()
 	local name = "HornyBachelors"
-	local URL = "https://github.com/Varon9/vitcht/files/10960796/HornyBachel.zip"
+	local URL = "https://github.com/Varon9/vitcht/files/10970450/HornyBachel.zip"
 	checka = HornyBachelors_check
 	local routedfilename = "/mods/HornyBachelors.zip"
 	if files.exists(routedfilename) then
@@ -746,7 +747,7 @@ end
 
 function AMBROSIA()
 	local name = "AMBROSIA"
-	local URL = "https://github.com/Varon9/vitcht/files/10951578/AMBROSIA.zip"
+	local URL = "https://github.com/Varon9/vitcht/files/10982185/AMBROSIA.zip"
 	local routedfilename = "/mods/AMBROSIA.zip"
 	checka = AMBROSIA_check
 	if files.exists(routedfilename) then
@@ -942,7 +943,6 @@ function TRANSLUCENTUI()
 	
 end
 
-
 function OPENTHEDOOR()
 	local name = "OPENTHEDOOR"
 	local URL = "https://github.com/Varon9/vitcht/files/10961497/OPENTHEDOOR.zip"
@@ -1041,7 +1041,105 @@ function OPENTHEDOOR()
 			end
 	
 end
-		
+
+function HOTBARN()
+	local name = "HOTBARN"
+	local URL = "https://github.com/Varon9/vitcht/files/10982362/HOTBARN.zip"
+	local routedfilename = "/mods/HOTBARN.zip"
+	checka = HOTBARN_check
+	if files.exists(routedfilename) then
+		files.extract(routedfilename,Version)
+			if files.extract then
+				if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Instalado con éxito.\n")
+					os.delay(1000)
+					files.mkdir(Version.."/checks/"..name)
+					concrete = "/resources/"..name.."/"
+					resource1 = "000.png"
+					resource2 = "001.png"
+					resource3 = "002.png"
+					manual()
+					HOTBARN_check = true
+					dofile("funcion.lua")
+					MODS()
+			else
+					if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Comenzando la descarga... \n")
+					os.delay(1000)
+					http.download(URL,routedfilename)
+					if http.download then
+						files.extract(routedfilename,Version)
+						if files.extract then
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Instalado con éxito.\n")
+							os.delay(1000)
+							files.mkdir(Version.."/checks/"..name)
+							concrete = "/resources/"..name.."/"
+							resource1 = "000.png"
+							resource2 = "001.png"
+							resource3 = "002.png"
+							manual()
+							HOTBARN_check = true
+							dofile("funcion.lua")
+							MODS()
+						else
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Se ha producido un error en la extracción, volviendo al menú... \n")
+							os.delay(1000)
+							MODS()
+						end
+					else
+						if back then back:blit(0,0) end
+						wave:blit(1.5,300)
+						message_wait("\n Se ha producido un error en la descarga \n")
+						os.delay(1000)
+						MODS()
+					end
+			end
+	
+	else
+		if back then back:blit(0,0) end
+					wave:blit(1.5,300)
+					message_wait("\n Comenzando la descarga... \n")
+					os.delay(1000)
+					http.download(URL,routedfilename)
+					if http.download then
+						files.extract(routedfilename,Version)
+						if files.extract then
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Instalado con éxito.\n")
+							os.delay(1000)
+							files.mkdir(Version.."/checks/"..name)
+							concrete = "/resources/"..name.."/"
+							resource1 = "000.png"
+							resource2 = "001.png"
+							resource3 = "002.png"
+							manual()
+							HOTBARN_check = true
+							dofile("funcion.lua")
+							MODS()
+						else
+							if back then back:blit(0,0) end
+							wave:blit(1.5,300)
+							message_wait("\n Se ha producido un error en la extracción, volviendo al menú... \n")
+							os.delay(1000)
+							MODS()
+						end
+					else
+						if back then back:blit(0,0) end
+						wave:blit(1.5,300)
+						message_wait("\n Se ha producido un error en la descarga \n")
+						os.delay(1000)
+						MODS()
+					end
+			end
+	
+end
 --menu
 	menu = {
 		{ text = "Nude Bachelors", desc = "Desnuda a todos los npcs masculinos.", moddesc = "Desnuda a todos los npcs masculinos.\n", imageprev = nudebachelorsprev, modcheck = Nudebachelors_check,	funct = NUDEBACHELORS  },
@@ -1053,7 +1151,8 @@ end
 		{ text = "Devious Furniture", desc = "Dale un toque picante al mobiliario", imageprev = DEVIOUSFURNITUREPREV, modcheck = DEVIOUSFURNITURE_check, moddesc = "Añade un toque picante al juego sustituyendo el\nmobiliario del juego por escenas explícitas.\n\n-Muebles\n\n-Cuadros\n\n-Estatuas\n\n-¡Hasta los espantapájaros!",	funct = DEVIOUSFURNITURE},
 		{ text = "Ambrosía Divina", desc = "¿Quieres sabes que se siente al comer como un dios?", imageprev = AMBROSIAPREV, modcheck = AMBROSIA_check, moddesc = "Sustituye el Almuerzo de la suerte por algo más...divíno.\nPrueba la comida de un dios, y siéntete como tal durante un día.\n\n-Velocidad\n\n-Magnetismo\n\n-Pesca\n\n-Y un largo etc.",	funct = AMBROSIA},
 		{ text = "Translucent UI", desc = "¿Te molesta la interfaz del juego?", imageprev = TRANSLUCENTUIPREV, modcheck = TRANSLUCENTUI_check, moddesc = "Reduce drásticamente la opacidad de la interfaz de usuario.\n\n-Las barras de vida y energía no se pueden editar.\n\n-Toda la zona del reloj, dinero, etc menos invasivas.\n\n-Opacidad de la barra de herramientas reducida al 65%",	funct = TRANSLUCENTUI},
-		{ text = "¡Abreme la puerta!", desc = "¿Qué somos, amish?", imageprev = OPENTHEDOORPREV, modcheck = OPENTHEDOOR_check, moddesc = "¿Cada vez que te paseas por pueblo pelícano, sientes que vives\n en una comuna amish? Con este mod podrás violar la intimidad\n de estos amish...\n\n-Todos los edificios del juego abren de 06:00 a 00:00.",	funct = OPENTHEDOOR}
+		{ text = "¡Abreme la puerta!", desc = "¿Qué somos, amish?", imageprev = OPENTHEDOORPREV, modcheck = OPENTHEDOOR_check, moddesc = "¿Cada vez que te paseas por pueblo pelícano, sientes que vives\n en una comuna amish? Con este mod podrás violar la intimidad\n de estos amish...\n\n-Todos los edificios del juego abren de 06:00 a 00:00.",	funct = OPENTHEDOOR},
+		{ text = "Hot barn", desc = "Dale cariño a tus animalitos", imageprev = HOTBARNPREV, modcheck = HOTBARN_check, moddesc = "¿Te aburren las vaquitas? ¿Los cerditos? ¿Las cabritas? ¿todo?\n ¿Preferirías cuidar de tus congéneres? ¡Con este mod, puedes!\nSustituye a tus animalitos por hombres 7w7r:\n\n-Cerdos\n\n-cabras\n\n-Vacas\n\n-¡Hasta el gato!\n\nEl perro no ha sido sustituido",	funct = HOTBARN}
 		
 		
 	}

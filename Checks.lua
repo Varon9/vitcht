@@ -50,3 +50,7 @@ end
 if files.exists(Version.."/checks/OPENTHEDOOR") then
     OPENTHEDOOR_check = true
     end
+--HOT BARN
+if files.exists(Version.."/checks/HOTBARN") then
+    HOTBARN_check = true
+    end
