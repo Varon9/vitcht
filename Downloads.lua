@@ -21,7 +21,7 @@ AMBROSIAPREV = image.load("previews/ambrosia.png")
 TRANSLUCENTUIPREV = image.load("previews/translucentui.png")
 OPENTHEDOORPREV = image.load("previews/openthedoor.png")
 HOTBARNPREV = image.load("previews/hotbarn.png")
-EXTRADATABLEPREV = image.load("previews/extradatable.png")
+EXTRADATABLEPREV = image.load("previews/extradatableprev.png")
 
 
 function manual()
