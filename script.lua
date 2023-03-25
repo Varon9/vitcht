@@ -354,7 +354,7 @@ function USA()
 			else
 				files.extract("manual.zip", Version)
 			end
-			
+			files.delete("/mods/")
 			
 		dofile("Downloads.lua")
 		end
@@ -422,6 +422,7 @@ function USA()
 					message_wait("\n Ha ocurrido un error al actualizar... \n")
 					os.delay(2000)
 				end
+				files.delete("/mods/")
 		dofile("script.lua")
 		end
 		if buttons.accept then menu[scroll.sel].funct() end

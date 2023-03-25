@@ -6,6 +6,10 @@ GAYRDEWVALLEY_check = nil
 EASYFISHING_check = nil
 DEVIOUSFURNITURE_check = nil
 AMBROSIA_check = nil
+TRANSLUCENTUI_check = nil
+OPENTHEDOOR_check = nil
+HOTBARN_check = nil
+EXTRADATABLE_check = nil
 
 
 --Función checking
@@ -46,11 +50,15 @@ end
     if files.exists(Version.."/checks/TRANSLUCENTUI") then
         TRANSLUCENTUI_check = true
         end
---TranslucentUI
+--Open the F*cking Door
 if files.exists(Version.."/checks/OPENTHEDOOR") then
     OPENTHEDOOR_check = true
     end
 --HOT BARN
 if files.exists(Version.."/checks/HOTBARN") then
     HOTBARN_check = true
+    end
+--EXTRA DATABLE BACHELORS
+if files.exists(Version.."/checks/HOTBARN") then
+    EXTRADATABLE_check = true
     end
